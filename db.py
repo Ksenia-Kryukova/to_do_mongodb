@@ -23,6 +23,10 @@ class Db:
         task = await self.collection.find_one({"_id": task_id})
         return task
 
+    async def find_task_by_title(self, title: str):
+        task = await self.collection.find_one({"title": title})
+        return task
+
     async def update_task(self, task_id: str, task: ToDo):
         update_task = await self.collection.update_one(
             {"_id": task_id},
